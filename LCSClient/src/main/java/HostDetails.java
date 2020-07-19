@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.net.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -45,6 +46,7 @@ public class HostDetails extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(54, 51, 51));
         jButton1.setText("Connect");
+        jButton1.setBorder(null);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -139,6 +141,7 @@ public class HostDetails extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -149,10 +152,19 @@ public class HostDetails extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,ex,"Exception Caught",JOptionPane.WARNING_MESSAGE);
         }
         Main_Client.sportno = Integer.valueOf(portno.getText());
+        
+        Main_Client.pwdform.setVisible(true);
         this.setVisible(false);
-        new SendMsg().setVisible(true);     
+         
+        try {
+            Main_Client.ssocket = new MulticastSocket(Main_Client.sportno);
+        } catch (IOException ex) {
+            Logger.getLogger(SendMsg.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,ex,"Exception Occured ",JOptionPane.WARNING_MESSAGE);
+        }
         
         
+        Send.simplesend("buffer;getpassword;");
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
