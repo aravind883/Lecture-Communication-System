@@ -302,6 +302,7 @@ public class MCQ extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -309,17 +310,17 @@ public class MCQ extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new FillInTheBlanks().setVisible(true);
+        Main_Host.fbframe.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        new TrueOrFalse().setVisible(true);
+        Main_Host.tfframe.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        new OneWord().setVisible(true);
+        Main_Host.owframe.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -346,13 +347,9 @@ public class MCQ extends javax.swing.JFrame {
         }
         
         
-        String tobesent = s + "," + _q + "," + _op1 + "," +  _op2 + "," +  _op3 + "," +  _op4 + "," + _a + ",";
+        String tobesent = s + ";" + _q + ";" + _op1 + ";" +  _op2 + ";" +  _op3 + ";" +  _op4 + ";" + _a + ";";
         
-        DatagramPacket spacket = new DatagramPacket(tobesent.getBytes(),tobesent.length(),Main_Host.sip,Main_Host.sport);try {
-        Main_Host.ssocket.send(spacket);            
-        } catch (IOException ex) {
-            Logger.getLogger(MCQ.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        Send.simplesend(tobesent);
         
     }//GEN-LAST:event_postActionPerformed
 

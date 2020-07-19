@@ -24,7 +24,8 @@ public class HostPage extends javax.swing.JFrame {
         portnumber = new javax.swing.JLabel();
         ipaddress = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
+        participantsbutton = new javax.swing.JButton();
+        question = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -86,15 +87,27 @@ public class HostPage extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(0, 173, 181));
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        jButton1.setBackground(new java.awt.Color(54, 51, 51));
-        jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 173, 181));
-        jButton1.setText("Post Question");
-        jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jButton1.setFocusPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        participantsbutton.setBackground(new java.awt.Color(54, 51, 51));
+        participantsbutton.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        participantsbutton.setForeground(new java.awt.Color(0, 173, 181));
+        participantsbutton.setText("Participants");
+        participantsbutton.setBorder(null);
+        participantsbutton.setFocusPainted(false);
+        participantsbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                participantsbuttonActionPerformed(evt);
+            }
+        });
+
+        question.setBackground(new java.awt.Color(54, 51, 51));
+        question.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        question.setForeground(new java.awt.Color(0, 173, 181));
+        question.setText("Post Question");
+        question.setBorder(null);
+        question.setFocusPainted(false);
+        question.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                questionActionPerformed(evt);
             }
         });
 
@@ -124,9 +137,11 @@ public class HostPage extends javax.swing.JFrame {
                                 .addComponent(portnumber, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(46, 46, 46)
+                .addComponent(participantsbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(question, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,12 +161,14 @@ public class HostPage extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel6)
                             .addComponent(portnumber))
-                        .addGap(0, 10, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 10, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(question, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(participantsbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(39, 33, 33));
@@ -166,7 +183,7 @@ public class HostPage extends javax.swing.JFrame {
         message.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         message.setForeground(new java.awt.Color(246, 233, 233));
         message.setRows(5);
-        message.setBorder(null);
+        message.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         message.setFocusable(false);
         message.setRequestFocusEnabled(false);
         jScrollPane2.setViewportView(message);
@@ -246,14 +263,17 @@ public class HostPage extends javax.swing.JFrame {
         Main_Host.rsocket.close();
     }//GEN-LAST:event_formWindowClosed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new MCQ().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void participantsbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_participantsbuttonActionPerformed
+        Main_Host.pframe.setVisible(true);
+    }//GEN-LAST:event_participantsbuttonActionPerformed
+
+    private void questionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_questionActionPerformed
+        Main_Host.mcqframe.setVisible(true);
+    }//GEN-LAST:event_questionActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Canvas canvas1;
     public static javax.swing.JLabel ipaddress;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -266,6 +286,8 @@ public class HostPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     public static javax.swing.JTextArea message;
+    private javax.swing.JButton participantsbutton;
     public static javax.swing.JLabel portnumber;
+    private javax.swing.JButton question;
     // End of variables declaration//GEN-END:variables
 }

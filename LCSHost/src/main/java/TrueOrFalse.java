@@ -12,7 +12,6 @@ public class TrueOrFalse extends javax.swing.JFrame {
         initComponents();
     }
 
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -212,10 +211,11 @@ public class TrueOrFalse extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new MCQ().setVisible(true);
+        Main_Host.mcqframe.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -224,31 +224,26 @@ public class TrueOrFalse extends javax.swing.JFrame {
     }//GEN-LAST:event_TrueActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        new OneWord().setVisible(true);
+        Main_Host.owframe.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new FillInTheBlanks().setVisible(true);
+        Main_Host.fbframe.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void postActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postActionPerformed
         
         
-        String tobesent = "3" + "," + question.getText() + ",";        
+        String tobesent = "3" + ";" + question.getText() + ";";        
         if(True.isSelected()){
-            tobesent = tobesent + "T" + ",";
+            tobesent = tobesent + "T" + ";";
         }
         else{
-            tobesent = tobesent + "F" + ",";
+            tobesent = tobesent + "F" + ";";
         }
-        
-        DatagramPacket spacket = new DatagramPacket(tobesent.getBytes(),tobesent.length(),Main_Host.sip,Main_Host.sport);try {
-        Main_Host.ssocket.send(spacket);            
-        } catch (IOException ex) {
-            Logger.getLogger(MCQ.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        Send.simplesend(tobesent);
     }//GEN-LAST:event_postActionPerformed
 
 
