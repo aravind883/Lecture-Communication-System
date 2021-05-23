@@ -1,5 +1,8 @@
 # Lecture-Communication-System
 
+This project digitalizes the process of asking or clarifying the doubts of audience in an Lecture or in an Presentation where there are over hundreds of attendees. The attendees can ask doubt through the client portal and the presenter's system receives the doubts and displays them so that the presenter can clear the doubts. The presenter can ask questions as well to the attendees.
+
+
 First of all, download and extract
 
 To execute this project, you'll have to run two files :
